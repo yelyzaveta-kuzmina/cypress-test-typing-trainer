@@ -1,0 +1,14 @@
+{
+  "name": "cypress-test-typing-trainer",
+  "version": "1.0.0",
+  "main": "index.test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress:open": "cypress open"
+  },
+  "author": "me",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^3.6.1"
+  }
+}
