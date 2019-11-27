@@ -3,7 +3,7 @@ const App = require("../../modules");
 const app = new App();
 
 describe("Check typing-trainer app", function() {
-  it("Should visits the localhost", function() {
+  it("Should get the localhost", function() {
     cy.visit("http://localhost:3000/");
   });
 
@@ -25,15 +25,22 @@ describe("Check typing-trainer app", function() {
   });
 
   it("Should check if the right content exists after click on the each poem", function() {
-    app.getElement(".bm-item").each(element => {
+    app.getElement(locator.poemItemInMenu).each(element => {
       cy.wrap(element)
         .click()
         .invoke("text")
         .then(text =>
-          app.checkElementsVisibilityAndContent(locator.poemName, text)
+          app.checkElementsVisibilityAndContent(
+            locator.poemNameInMainPage,
+            text
+          )
         );
+      app.getElement(locator.text).should("be.visible");
     });
+  });
 
-    app.getElement(locator.text).should("be.visible");
+  it("Should close the menu. Menu shouldn't be visible anymore", function() {
+    app.getElement(locator.closeMenuButton).click();
+    app.getElement(locator.burgerMenu).should("be.not.visible");
   });
 });
