@@ -3,6 +3,15 @@ class App {
     return cy.get(element);
   }
 
+  checkElementsVisibilityAndContent(element, elementsName) {
+    return this.getElement(element)
+      .should("be.visible")
+      .should("contain", elementsName);
+  }
+
+  // getText(element) {
+  //   return this.getElement(element).invoke("text");
+  // }
   // get modalElement() {
   //   return cy.get(
   //     "#root > div.styles_wrapper__3dLt8 > div.styles_confirmationDialog__1wG3R.react-draggable"
@@ -10,11 +19,6 @@ class App {
   // }
   // get errorsCountElement() {
   //   return cy.get(".styles_errorsNumber__M_g-U").invoke("text");
-  // }
-  // getGameText() {
-  //   return cy
-  //     .get("#root > div.styles_wrapper__3dLt8 > div.styles_sentence__2sGIj")
-  //     .invoke("text");
   // }
   // typeParagraph() {
   //   return this.getGameText().then(text => {

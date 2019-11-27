@@ -24,30 +24,16 @@ describe("Check typing-trainer app", function() {
       .and("not.be.disabled");
   });
 
-  it("Should check names of the poems", function() {
-    app
-      .getElement(".bm-item")
-      .eq(0)
-      .should("contain", 'F. Schiller "Das Mädchen aus der Fremde"');
+  it("Should check if the right content exists after click on the each poem", function() {
+    app.getElement(".bm-item").each(element => {
+      cy.wrap(element)
+        .click()
+        .invoke("text")
+        .then(text =>
+          app.checkElementsVisibilityAndContent(locator.poemName, text)
+        );
+    });
 
-    app
-      .getElement(".bm-item")
-      .eq(1)
-      .should("contain", 'H. Hesse "Abendgespräch"');
-
-    app
-      .getElement(".bm-item")
-      .eq(2)
-      .should("contain", 'H. Hesse "Jede Nacht"');
+    app.getElement(locator.text).should("be.visible");
   });
-
-  // it("Should show continue modal window after first paragraph", function() {
-  //   app.typeParagraph();
-  //   expect(app.modalElement).to.exist;
-  //   app.errorsCountElement.should("eq", "0");
-  // });
-  // it("Should not show continue modal in the end", function() {
-  //   app.typeAllParagraphs();
-  //   app.modalElement.should("not.exist");
-  // });
 });
