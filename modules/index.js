@@ -9,9 +9,9 @@ class App {
       .should("contain", elementsName);
   }
 
-  // getText(element) {
-  //   return this.getElement(element).invoke("text");
-  // }
+  getText(element) {
+    return this.getElement(element).invoke("text");
+  }
   // get modalElement() {
   //   return cy.get(
   //     "#root > div.styles_wrapper__3dLt8 > div.styles_confirmationDialog__1wG3R.react-draggable"
