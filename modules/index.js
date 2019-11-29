@@ -1,3 +1,5 @@
+const locator = require("../locators");
+
 class App {
   getElement(element) {
     return cy.get(element);
@@ -12,6 +14,14 @@ class App {
   getText(element) {
     return this.getElement(element).invoke("text");
   }
+
+  typeParagraph(paragraph) {
+    return this.getText(paragraph).then(text => {
+      const input = this.getElement(locator.mainPageInput);
+      const textToType = text.replace(/↩/g, "");
+      input.type(textToType);
+    });
+  }
   // get modalElement() {
   //   return cy.get(
   //     "#root > div.styles_wrapper__3dLt8 > div.styles_confirmationDialog__1wG3R.react-draggable"
@@ -20,15 +30,7 @@ class App {
   // get errorsCountElement() {
   //   return cy.get(".styles_errorsNumber__M_g-U").invoke("text");
   // }
-  // typeParagraph() {
-  //   return this.getGameText().then(text => {
-  //     const input = cy.get(
-  //       "#root > div.styles_wrapper__3dLt8 > div.styles_inputWrapper__1kPzV > input:first"
-  //     );
-  //     const textToType = text.replace(/↩/g, "");
-  //     input.type(textToType);
-  //   });
-  // }
+
   // typeAllParagraphs() {
   //   return this.confirmGameContinue()
   //     .then(() => this.typeParagraph())

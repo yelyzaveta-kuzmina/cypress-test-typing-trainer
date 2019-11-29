@@ -1,8 +1,14 @@
 module.exports = {
+  mainPageInput: 'input[test-handle="input"]',
   mainPageText: 'div[test-handle="text"]',
   mainPagePoemName: 'div[test-handle="poem-name"]',
   mainPageBurgerMenuButton: "#root > div:nth-child(1) > div:nth-child(3) > div",
   mainPageRestartButton: 'button[test-handle="restart-button"]',
+
+  liveResults: 'div[test-handle="results-live"]',
+  liveResultsTimer: 'span[test-handle="timer"]',
+  liveResultsErrors: 'span[test-handle="errors"]',
+  liveResultsSpeed: 'span[test-handle="speed"]',
 
   burgerMenu: ".bm-menu",
   burgerMenuList:
